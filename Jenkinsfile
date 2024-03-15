@@ -24,10 +24,9 @@ pipeline{
                      bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
                      bat 'docker push shaarv70/selenium:latest'
                      bat "docker tag shaarv70/selenium:latest shaarv70/selenium:${env.BUILD_NUMBER}"
-                      bat 'docker push shaarv70/selenium:${env.BUILD_NUMBER}'
+                      bat "docker push shaarv70/selenium:${env.BUILD_NUMBER}"
                }
-
-            }
+           }
 
        }
          post{
