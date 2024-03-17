@@ -5,8 +5,8 @@ import com.google.common.util.concurrent.Uninterruptibles;
 import com.shaarv70.listener.TestListener;
 import com.shaarv70.util.Config;
 import com.shaarv70.util.Constants;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -15,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -46,13 +45,14 @@ public abstract class AbstractTest {
             capabilities=new FirefoxOptions();
         }
         else {
-            capabilities=new ChromeOptions();
+            capabilities=new ChromeOptions().addArguments("--no-sandbox","--disable-dev-shm-usage");
         }
         String urlFormat=Config.get(Constants.GRID_URL_FORMAT);
         String hubHost=Config.get(Constants.GRID_HUB_HOST);
         String url=String.format(urlFormat,hubHost);
         log.info("grid url: {}",url);
         return new RemoteWebDriver(new URL(url),capabilities);
+
     }
     private WebDriver getLocalDriver()
     {
