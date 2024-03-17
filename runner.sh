@@ -22,26 +22,26 @@ count=0
 #below line means first curl will give the status of the grid in json (pipe symbol means we will perform
 # that operation after ) then that json will be feed to jq from which the value of ready key will be fetched
 # while loop will be executed until the ready key value becomes true.
-while [ "$( curl -s http://${HUB_HOST:-hub}:4444/status | jq -r .value.ready )" != "true" ]
-do
+ while [ "$( curl -s http://${HUB_HOST:-hub}:4444/status | jq -r .value.ready )" != "true" ]
+ do
   count=$((count+1))
   echo "Attempt: ${count}"
-  if [ "$count" -ge 90 ]
+  if [ "$count" -ge 32 ]
   then
-      echo "**** HUB IS NOT READY WITHIN 90 SECONDS ****"
+      echo "**** HUB IS NOT READY WITHIN 32 SECONDS ****"
       exit 1
   fi
   sleep 1
-done
+ done
 
 # At this point, selenium grid should be up!
 echo "Selenium Grid is up and running. Running the test...."
 
 # Start the java command
-java -cp 'libs/*' \
-     -Dselenium.grid.enabled=true \
-     -Dselenium.grid.hubHost="${HUB_HOST:-hub}" \
-     -Dbrowser="${BROWSER:-chrome}" \
-     org.testng.TestNG \
-     -threadcount "${THREAD_COUNT:-1}" \
-     test-suites/"${TEST_SUITE}"
+ java -cp 'libs/*' \
+      -Dselenium.grid.enabled=true \
+      -Dselenium.grid.hubHost="${HUB_HOST:-hub}" \
+      -Dbrowser="${BROWSER:-chrome}" \
+       org.testng.TestNG \
+      -threadcount "${THREAD_COUNT:-1}" \
+       test-suites/"${TEST_SUITE}"
