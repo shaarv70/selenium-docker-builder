@@ -8,7 +8,7 @@ RUN apk add curl jq
 WORKDIR /home/selenium-docker
 #Add the required files to run the test into the currnt workdir(./) which we have mentioned above
 #we can add multiple files
-ADD target/docker-resources     ./
+ADD target/docker-resources   ./
 #down line means runner .sh present in root directory add it in the working directory of container with same name
 ADD runner.sh runner.sh
 RUN dos2unix runner.sh
