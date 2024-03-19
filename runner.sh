@@ -26,9 +26,9 @@ count=0
  do
   count=$((count+1))
   echo "Attempt: ${count}"
-  if [ "$count" -ge 80 ]
+  if [ "$count" -ge 90 ]
   then
-      echo "**** HUB IS NOT READY WITHIN 80 SECONDS ****"
+      echo "**** HUB IS NOT READY WITHIN 90 SECONDS ****"
       exit 1
   fi
   sleep 1
