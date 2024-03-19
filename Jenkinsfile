@@ -32,8 +32,8 @@ pipeline{
          post{
              always {
                   bat "docker logout"
-                  bat "docker rm image shaarv70/selenium:latest"
-                  bat"docker rm image shaarv70/selenium:${env.BUILD_NUMBER}"
+                  bat "docker image rm shaarv70/selenium:latest"
+                  bat"docker image rm shaarv70/selenium:${env.BUILD_NUMBER}"
              }
          }
 
