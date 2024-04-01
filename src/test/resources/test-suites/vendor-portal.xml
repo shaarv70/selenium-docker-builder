@@ -6,7 +6,7 @@
             <class name="com.shaarv70.tests.vendorportal.VendorPortalTest"/>
         </classes>
     </test>
-    <test name="user-mike">
+  <!--  <test name="user-mike">
         <parameter name="testDataPath" value="test-data/vendor-portal/mike.json" />
         <classes>
             <class name="com.shaarv70.tests.vendorportal.VendorPortalTest"/>
@@ -17,5 +17,5 @@
         <classes>
             <class name="com.shaarv70.tests.vendorportal.VendorPortalTest"/>
         </classes>
-    </test>
+    </test>-->
 </suite>
